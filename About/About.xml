@@ -7,7 +7,7 @@
 	<supportedVersions>
 		<li>1.2</li>
 	</supportedVersions>
-	<description>Adds a widget to the bottom right corner of the screen to show the market value of anything you mouseover.</description>
+	<description>Allows previous and next colonist keys to switch between prisoners, animals, guests, etc.</description>
 	<modDependencies>
 		<li>
 			<packageId>brrainz.harmony</packageId>
