@@ -1,3 +1,9 @@
+## [1.0.1] - 2021-01-20
+
+### Changed
+- Cycling through pawns now includes corpses of that type
+
+
 ## [1.0.0] - 2021-01-18
 
 ### Added
