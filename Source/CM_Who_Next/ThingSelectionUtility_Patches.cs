@@ -20,40 +20,42 @@ namespace CM_Who_Next
             {
                 
                 Thing selectedThing = Find.Selector.FirstSelectedObject as Thing;
-                Pawn selectedPawn = selectedThing as Pawn ?? (selectedThing as Corpse)?.InnerPawn;
+                Corpse selectedCorpse = (selectedThing as Corpse);
+                bool corpseSelected = (selectedCorpse != null);
+                Pawn selectedPawn = selectedThing as Pawn ?? selectedCorpse?.InnerPawn;
 
                 if (selectedPawn != null)
                 {
                     // Prisoners
                     if (selectedPawn.IsPrisonerOfColony)
-                        madeSwitch = SelectNextMatchingPawn(map, selectedThing, p => p.IsPrisonerOfColony, direction);
+                        madeSwitch = SelectNextMatchingPawn(map, selectedThing, corpseSelected, p => p.IsPrisonerOfColony, direction);
                     // Animals
                     else if (selectedPawn.AnimalOrWildMan())
-                        madeSwitch = SelectNextMatchingPawn(map, selectedThing, p => p.Faction == selectedPawn.Faction && p.AnimalOrWildMan(), direction);
+                        madeSwitch = SelectNextMatchingPawn(map, selectedThing, corpseSelected, p => p.Faction == selectedPawn.Faction && p.AnimalOrWildMan(), direction);
                     // Peoples
                     else if (selectedPawn.Faction != Faction.OfPlayer)
-                        madeSwitch = SelectNextMatchingPawn(map, selectedThing, p => p.Faction == selectedPawn.Faction && !p.IsPrisonerOfColony && !p.AnimalOrWildMan(), direction);
+                        madeSwitch = SelectNextMatchingPawn(map, selectedThing, corpseSelected, p => p.Faction == selectedPawn.Faction && !p.IsPrisonerOfColony && !p.AnimalOrWildMan(), direction);
                 }
             }
 
             return madeSwitch;
         }
 
-        private static bool SelectNextMatchingPawn(Map map, Thing selectedThing, Func<Pawn, bool> filter, int direction = 1)
+        private static bool SelectNextMatchingPawn(Map map, Thing selectedThing, bool corpseSelected, Func<Pawn, bool> filter, int direction = 1)
         {
-            Log.Message("Attempting to select next pawn");
+            //Log.Message("Attempting to select next pawn");
 
             Func<Thing, bool> pawnAndCorpseFilter = new Func<Thing, bool>(thing =>
             {
                 Pawn thingPawn = thing as Pawn;
-                if (thing as Pawn != null)
+                if (thing as Pawn != null && (WhoNextMod.settings.allowSwitchingBetweenCorpsesAndLiving || !corpseSelected))
                 {
                     return filter(thing as Pawn);
                 }
                 else
                 {
                     Corpse thingCorpse = thing as Corpse;
-                    if (thingCorpse != null && thingCorpse.InnerPawn != null)
+                    if (thingCorpse != null && thingCorpse.InnerPawn != null && (WhoNextMod.settings.allowSwitchingBetweenCorpsesAndLiving || corpseSelected))
                     {
                         return filter(thingCorpse.InnerPawn);
                     }
@@ -62,7 +64,6 @@ namespace CM_Who_Next
                 return false;
             });
 
-            //List<Thing> filteredPawns = map.mapPawns.AllPawns.Where(filter).Select(pawn => pawn as Thing).ToList();
             List<Thing> pawnsAndCorpsePawns = map.listerThings.AllThings.Where(pawnAndCorpseFilter).ToList();
             
             int selectedIndex = pawnsAndCorpsePawns.FindIndex(thing => thing == selectedThing);
@@ -89,7 +90,7 @@ namespace CM_Who_Next
             [HarmonyPrefix]
             public static bool Prefix()
             {
-                Log.Message("ThingSelectionUtility.SelectNextColonist prefix");
+                //Log.Message("ThingSelectionUtility.SelectNextColonist prefix");
 
                 bool callOriginal = !AttemptSelectNewPawn(1);
                 return callOriginal;
@@ -103,7 +104,7 @@ namespace CM_Who_Next
             [HarmonyPrefix]
             public static bool Prefix()
             {
-                Log.Message("ThingSelectionUtility.SelectPreviousColonist prefix");
+                //Log.Message("ThingSelectionUtility.SelectPreviousColonist prefix");
 
                 bool callOriginal = !AttemptSelectNewPawn(-1);
                 return callOriginal;
