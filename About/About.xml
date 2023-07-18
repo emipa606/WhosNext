@@ -1,25 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Who's Next?</name>
-	<author>Captain Muscles (Nathan Harbour)</author>
-	<packageId>CaptainMuscles.WhoNext</packageId>
-	<url>https://github.com/CaptainMuscles/CM_Who_Next</url>
-	<supportedVersions>
-		<li>1.2</li>
+  <name>Who's Next? (Continued)</name>
+  <packageId>Mlie.WhosNext</packageId>
+  <author>Captain Muscles (Nathan Harbour)</author>
+  <url>https://github.com/emipa606/WhosNext</url>
+  <supportedVersions>
+    <li>1.2</li>
     <li>1.3</li>
-	</supportedVersions>
-	<description>Allows previous and next colonist keys to switch between prisoners, animals, guests, etc.</description>
-	<modDependencies>
-		<li>
-			<packageId>brrainz.harmony</packageId>
-			<displayName>Harmony</displayName>
-			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
-			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
-		</li>
-	</modDependencies>
+    <li>1.4</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+Update of Captain Muscles (Nathan Harbour)s mod https://steamcommunity.com/sharedfiles/filedetails/?id=2366255005
 
-	<loadAfter>
-		<li>Ludeon.RimWorld</li>
-		<li>brrainz.harmony</li>
-	</loadAfter>
+[img]https://i.imgur.com/pufA0kM.png[/img]
+
+[table]
+    [tr][td][url=https://dsc.gg/mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td] [td][url=https://github.com/emipa606/WhosNext][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
+        [td][img]https://i.imgur.com/h5VwTNL.png[/img][/td]
+    [/tr]
+[/table]
+	
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
+[img]https://i.imgur.com/Mi8ecQv.gif[/img]
+
+From the brilliant mind who complained until I made [b]Drop All Inventory[/b] and the glorious muscles that would do anything to make that complaining stop comes:
+
+[h1]Who's Next?[/h1]
+
+[b]Who's Next?[/b] allows the next colonist and previous colonist keys to switch between pawns other than colonists on the current map.
+
+[h2]Instructions[/h2]
+[hr][/hr]
+1. Select a pawn.
+2. Press '' or '' to select and center the camera on the previous or next pawn of that type.
+    - Prisoners
+    - Animals (wild)
+    - Animals (belonging to the same faction)
+    - Human pawns of another faction
+    - (Switching between colonists works as normal)
+
+[b]Update 1.0.1:[/b] This function will now also include corpses of the appropriate type when cycling between pawns.
+[b]Update 1.0.2:[/b] Added settings menu with an option to allow/forbid cycling between living pawns and corpses. (Currently 1.3 only)
+
+
+Github download link:
+[url=https://github.com/CaptainMuscles/CM_Who_Next/releases]https://github.com/CaptainMuscles/CM_Who_Next/releases[/url]
+
+[h2]Mods by Captain Muscles[/h2]
+[hr][/hr]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2307817213][img]https://i.imgur.com/VoByiic.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2329172147][img]https://i.imgur.com/74JDWuZ.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2362736503][img]https://i.imgur.com/WG8os6d.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2375902187][img]https://i.imgur.com/fCN25Ys.png[/img][/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2336610918][img]https://i.imgur.com/jxSOtsD.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2353882085][img]https://i.imgur.com/rta4B3f.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2355912467][img]https://i.imgur.com/iEJE3WP.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2359566858][img]https://i.imgur.com/e85mMAF.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2366255005][img]https://i.imgur.com/liOYDNc.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2369675899][img]https://i.imgur.com/NtLQOev.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2369307661][img]https://i.imgur.com/smZOUK8.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2375193973][img]https://i.imgur.com/YwDNpdl.png[/img][/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2380798255][img]https://i.imgur.com/HYnv9r5.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2385755478][img]https://i.imgur.com/lA8ImyW.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2401146569][img]https://i.imgur.com/t7SaJpC.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2403595130][img]https://i.imgur.com/rvZg6ly.png[/img][/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2411212162][img]https://i.imgur.com/MYa8nY7.png[/img][/url][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2446986597][img]https://i.imgur.com/DMXfSaJ.png[/img][/url]
+[hr][/hr]
+
+[img]https://i.imgur.com/PwoNOj4.png[/img]
+[list]
+[*] See if the the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[/list]</description>
 </ModMetaData>

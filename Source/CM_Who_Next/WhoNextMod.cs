@@ -1,42 +1,37 @@
-﻿using HarmonyLib;
-using RimWorld;
-using Verse;
+﻿using Mlie;
 using UnityEngine;
+using Verse;
 
-namespace CM_Who_Next
+namespace CM_Who_Next;
+
+public class WhoNextMod : Mod
 {
-    public class WhoNextMod : Mod
+    public static WhoNextModSettings settings;
+    public static string currentVersion;
+
+    public WhoNextMod(ModContentPack content) : base(content)
     {
-        private static WhoNextMod _instance;
-        public static WhoNextMod Instance => _instance;
+        Instance = this;
+        settings = GetSettings<WhoNextModSettings>();
+        currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
+    }
 
-        public static WhoNextModSettings settings;
+    public static WhoNextMod Instance { get; private set; }
 
-        public WhoNextMod(ModContentPack content) : base(content)
-        {
-            var harmony = new Harmony("CM_Who_Next");
-            harmony.PatchAll();
+    public override string SettingsCategory()
+    {
+        return "Who's Next?";
+    }
 
-            _instance = this;
+    public override void DoSettingsWindowContents(Rect inRect)
+    {
+        base.DoSettingsWindowContents(inRect);
+        settings.DoSettingsWindowContents(inRect);
+    }
 
-            settings = GetSettings<WhoNextModSettings>();
-        }
-
-        public override string SettingsCategory()
-        {
-            return "Who's Next?";
-        }
-
-        public override void DoSettingsWindowContents(Rect inRect)
-        {
-            base.DoSettingsWindowContents(inRect);
-            settings.DoSettingsWindowContents(inRect);
-        }
-
-        public override void WriteSettings()
-        {
-            base.WriteSettings();
-            settings.UpdateSettings();
-        }
+    public override void WriteSettings()
+    {
+        base.WriteSettings();
+        settings.UpdateSettings();
     }
 }
