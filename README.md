@@ -33,10 +33,6 @@ From the brilliant mind who complained until I made **Drop All Inventory** and t
 **Update 1.0.1:** This function will now also include corpses of the appropriate type when cycling between pawns.
 **Update 1.0.2:** Added settings menu with an option to allow/forbid cycling between living pawns and corpses. (Currently 1.3 only)
 
-
-Github download link:
-https://github.com/CaptainMuscles/CM_Who_Next/releases]https://github.com/CaptainMuscles/CM_Who_Next/releases
-
 ## Mods by Captain Muscles
 
 [hr][/hr]
@@ -70,9 +66,13 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2446986597]![Image](https
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib and command Ctrl+F12
+-  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib or the standalone https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader and command Ctrl+F12
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
+-  Use https://github.com/RimSort/RimSort/releases/latest]RimSort to sort your mods
 
+
+
+https://steamcommunity.com/sharedfiles/filedetails/changelog/3006402305]![Image](https://img.shields.io/github/v/release/emipa606/WhosNext?label=latest%20version&style=plastic&color=9f1111&labelColor=black)
 

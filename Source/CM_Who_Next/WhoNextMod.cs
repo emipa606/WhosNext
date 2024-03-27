@@ -6,8 +6,10 @@ namespace CM_Who_Next;
 
 public class WhoNextMod : Mod
 {
-    public static WhoNextModSettings settings;
     public static string currentVersion;
+
+    public static WhoNextMod Instance;
+    public readonly WhoNextModSettings settings;
 
     public WhoNextMod(ModContentPack content) : base(content)
     {
@@ -15,8 +17,6 @@ public class WhoNextMod : Mod
         settings = GetSettings<WhoNextModSettings>();
         currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
-
-    public static WhoNextMod Instance { get; private set; }
 
     public override string SettingsCategory()
     {

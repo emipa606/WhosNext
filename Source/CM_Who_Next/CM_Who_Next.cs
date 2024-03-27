@@ -62,20 +62,6 @@ public static class CM_Who_Next
     {
         //Log.Message("Attempting to select next pawn");
 
-        bool PawnAndCorpseFilter(Thing thing)
-        {
-            switch (thing)
-            {
-                case Pawn pawn when WhoNextMod.settings.allowSwitchingBetweenCorpsesAndLiving || !corpseSelected:
-                    return filter(pawn);
-                case Corpse { InnerPawn: not null } thingCorpse
-                    when WhoNextMod.settings.allowSwitchingBetweenCorpsesAndLiving || corpseSelected:
-                    return filter(thingCorpse.InnerPawn);
-                default:
-                    return false;
-            }
-        }
-
         var pawnsAndCorpsePawns = map.listerThings.AllThings.Where(PawnAndCorpseFilter).ToList();
 
         var selectedIndex = pawnsAndCorpsePawns.FindIndex(thing => thing == selectedThing);
@@ -98,5 +84,20 @@ public static class CM_Who_Next
         CameraJumper.TryJumpAndSelect(pawnsAndCorpsePawns[selectedIndex]);
 
         return true;
+
+        bool PawnAndCorpseFilter(Thing thing)
+        {
+            switch (thing)
+            {
+                case Pawn pawn when WhoNextMod.Instance.settings.allowSwitchingBetweenCorpsesAndLiving ||
+                                    !corpseSelected:
+                    return filter(pawn);
+                case Corpse { InnerPawn: not null } thingCorpse
+                    when WhoNextMod.Instance.settings.allowSwitchingBetweenCorpsesAndLiving || corpseSelected:
+                    return filter(thingCorpse.InnerPawn);
+                default:
+                    return false;
+            }
+        }
     }
 }
