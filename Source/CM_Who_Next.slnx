@@ -1,0 +1,6 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="CM_Who_Next/CM_Who_Next.csproj" />
+</Solution>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -11,7 +12,7 @@ public static class CM_Who_Next
 {
     static CM_Who_Next()
     {
-        new Harmony("CM_Who_Next").PatchAll();
+        new Harmony("CM_Who_Next").PatchAll(Assembly.GetExecutingAssembly());
     }
 
     public static bool AttemptSelectNewPawn(int direction)
@@ -37,19 +38,19 @@ public static class CM_Who_Next
         // Prisoners
         if (selectedPawn.IsPrisonerOfColony)
         {
-            madeSwitch = SelectNextMatchingPawn(map, selectedThing, corpseSelected, p => p.IsPrisonerOfColony,
+            madeSwitch = selectNextMatchingPawn(map, selectedThing, corpseSelected, p => p.IsPrisonerOfColony,
                 direction);
         }
         // Animals
         else if (selectedPawn.AnimalOrWildMan())
         {
-            madeSwitch = SelectNextMatchingPawn(map, selectedThing, corpseSelected,
+            madeSwitch = selectNextMatchingPawn(map, selectedThing, corpseSelected,
                 p => p.Faction == selectedPawn.Faction && p.AnimalOrWildMan(), direction);
         }
         // Peoples
         else if (selectedPawn.Faction != Faction.OfPlayer)
         {
-            madeSwitch = SelectNextMatchingPawn(map, selectedThing, corpseSelected,
+            madeSwitch = selectNextMatchingPawn(map, selectedThing, corpseSelected,
                 p => p.Faction == selectedPawn.Faction && !p.IsPrisonerOfColony && !p.AnimalOrWildMan(),
                 direction);
         }
@@ -57,12 +58,12 @@ public static class CM_Who_Next
         return madeSwitch;
     }
 
-    private static bool SelectNextMatchingPawn(Map map, Thing selectedThing, bool corpseSelected,
+    private static bool selectNextMatchingPawn(Map map, Thing selectedThing, bool corpseSelected,
         Func<Pawn, bool> filter, int direction = 1)
     {
         //Log.Message("Attempting to select next pawn");
 
-        var pawnsAndCorpsePawns = map.listerThings.AllThings.Where(PawnAndCorpseFilter).ToList();
+        var pawnsAndCorpsePawns = map.listerThings.AllThings.Where(pawnAndCorpseFilter).ToList();
 
         var selectedIndex = pawnsAndCorpsePawns.FindIndex(thing => thing == selectedThing);
         if (selectedIndex < 0)
@@ -85,15 +86,15 @@ public static class CM_Who_Next
 
         return true;
 
-        bool PawnAndCorpseFilter(Thing thing)
+        bool pawnAndCorpseFilter(Thing thing)
         {
             switch (thing)
             {
-                case Pawn pawn when WhoNextMod.Instance.settings.allowSwitchingBetweenCorpsesAndLiving ||
+                case Pawn pawn when WhoNextMod.Instance.Settings.AllowSwitchingBetweenCorpsesAndLiving ||
                                     !corpseSelected:
                     return filter(pawn);
                 case Corpse { InnerPawn: not null } thingCorpse
-                    when WhoNextMod.Instance.settings.allowSwitchingBetweenCorpsesAndLiving || corpseSelected:
+                    when WhoNextMod.Instance.Settings.AllowSwitchingBetweenCorpsesAndLiving || corpseSelected:
                     return filter(thingCorpse.InnerPawn);
                 default:
                     return false;

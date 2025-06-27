@@ -6,16 +6,16 @@ namespace CM_Who_Next;
 
 public class WhoNextMod : Mod
 {
-    public static string currentVersion;
+    public static string CurrentVersion;
 
     public static WhoNextMod Instance;
-    public readonly WhoNextModSettings settings;
+    public readonly WhoNextModSettings Settings;
 
     public WhoNextMod(ModContentPack content) : base(content)
     {
         Instance = this;
-        settings = GetSettings<WhoNextModSettings>();
-        currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
+        Settings = GetSettings<WhoNextModSettings>();
+        CurrentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
     public override string SettingsCategory()
@@ -26,12 +26,6 @@ public class WhoNextMod : Mod
     public override void DoSettingsWindowContents(Rect inRect)
     {
         base.DoSettingsWindowContents(inRect);
-        settings.DoSettingsWindowContents(inRect);
-    }
-
-    public override void WriteSettings()
-    {
-        base.WriteSettings();
-        settings.UpdateSettings();
+        Settings.DoSettingsWindowContents(inRect);
     }
 }

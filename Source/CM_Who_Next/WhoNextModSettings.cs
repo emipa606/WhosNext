@@ -6,37 +6,33 @@ namespace CM_Who_Next;
 
 public class WhoNextModSettings : ModSettings
 {
-    public bool allowSwitchingBetweenCorpsesAndLiving = true;
+    public bool AllowSwitchingBetweenCorpsesAndLiving = true;
 
     public override void ExposeData()
     {
         base.ExposeData();
 
-        Scribe_Values.Look(ref allowSwitchingBetweenCorpsesAndLiving, "allowSwitchingBetweenCorpsesAndLiving", true);
+        Scribe_Values.Look(ref AllowSwitchingBetweenCorpsesAndLiving, "allowSwitchingBetweenCorpsesAndLiving", true);
     }
 
     public void DoSettingsWindowContents(Rect inRect)
     {
-        var listing_Standard = new Listing_Standard();
-        listing_Standard.Begin(inRect);
+        var listingStandard = new Listing_Standard();
+        listingStandard.Begin(inRect);
 
-        listing_Standard.CheckboxLabeled("CM_Who_Next_Setting_AllowSwitchingBetweenCorpsesAndLiving_Label".Translate(),
-            ref allowSwitchingBetweenCorpsesAndLiving,
+        listingStandard.CheckboxLabeled("CM_Who_Next_Setting_AllowSwitchingBetweenCorpsesAndLiving_Label".Translate(),
+            ref AllowSwitchingBetweenCorpsesAndLiving,
             "CM_Who_Next_Setting_AllowSwitchingBetweenCorpsesAndLiving_Description".Translate());
-        listing_Standard.Label("CM_Who_Next_Setting_CurrentKeys_Label".Translate(
+        listingStandard.Label("CM_Who_Next_Setting_CurrentKeys_Label".Translate(
             KeyBindingDefOf.PreviousColonist.MainKeyLabel, KeyBindingDefOf.NextColonist.MainKeyLabel));
-        if (WhoNextMod.currentVersion != null)
+        if (WhoNextMod.CurrentVersion != null)
         {
-            listing_Standard.Gap();
+            listingStandard.Gap();
             GUI.contentColor = Color.gray;
-            listing_Standard.Label("CM_Who_Next_Setting_CurrentModVersion_Label".Translate(WhoNextMod.currentVersion));
+            listingStandard.Label("CM_Who_Next_Setting_CurrentModVersion_Label".Translate(WhoNextMod.CurrentVersion));
             GUI.contentColor = Color.white;
         }
 
-        listing_Standard.End();
-    }
-
-    public void UpdateSettings()
-    {
+        listingStandard.End();
     }
 }
